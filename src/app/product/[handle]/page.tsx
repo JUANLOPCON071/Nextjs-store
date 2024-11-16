@@ -9,6 +9,21 @@ interface ProductPageProps {
     }
 }
 
+export async function generateMetaData({ searchParams }: ProductPageProps) {
+  const id = searchParams.id
+  const products = await getProducts(id)
+  const product = products[0]
+
+  return {
+    tittle: product.title,
+    description: product.description,
+    keywords: product.tags,
+    openGraph: {
+      images: [product.image]
+    }
+  }
+}
+
 const ProductPage = async ({ searchParams }: ProductPageProps) => {
     const id = searchParams.id
     const products = await getProducts(id)
