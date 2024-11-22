@@ -17,5 +17,4 @@ mutation customerCreate($input: CustomerCreateInput!) {
         }
     }
 }
-    
 `
